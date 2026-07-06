@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<title>WILLIAN — Sites sob medida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Archivo:ital,wght@0,400;0,500;0,600;1,700;1,800&amp;family=Pirata+One&amp;family=Baloo+2:wght@600;700;800&amp;family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#0A0A0B;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  *{box-sizing:border-box}
+  ::selection{background:#C6F135;color:#0A0A0B}
+  @keyframes wl-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes wl-scrollline{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+  @keyframes wl-blob{0%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.12)}100%{transform:translate(-20px,24px) scale(.94)}}
+  @keyframes wl-pulse{0%,100%{opacity:1}50%{opacity:.35}}
+</style>
+</helmet>
+
+<div id="site-root" data-hover-root="true" style="--bg:#0A0A0B; --fg:#F4F4EF; --muted:#9A9A93; --accent:#C6F135; --line:rgba(244,244,239,.14); background:var(--bg); color:var(--fg); font-family:'Archivo',sans-serif; min-height:100vh; position:relative; overflow-x:hidden; transition:background-color .9s cubic-bezier(.45,0,.2,1), color .9s cubic-bezier(.45,0,.2,1);">
+
+  <!-- ===== texture layers (crossfaded per skin) ===== -->
+  <div aria-hidden="true" style="position:fixed; inset:0; z-index:0; pointer-events:none;">
+    <div class="tx" data-tx="base" style="position:absolute; inset:0; opacity:0; transition:opacity .9s cubic-bezier(.45,0,.2,1); background:radial-gradient(70% 55% at 70% -10%, rgba(198,241,53,.08), transparent 70%);"></div>
+    <div class="tx" data-tx="burger" style="position:absolute; inset:0; opacity:0; transition:opacity .9s cubic-bezier(.45,0,.2,1); background:radial-gradient(55% 45% at 15% 15%, rgba(255,198,26,.12), transparent 70%);">
+      <div style="position:absolute; bottom:-14%; right:-6%; width:38vw; height:38vw; border-radius:58% 42% 44% 56% / 46% 58% 42% 54%; background:rgba(228,86,15,.16); filter:blur(46px); animation:wl-blob 20s ease-in-out infinite alternate-reverse;"></div>
+    </div>
+    <div class="tx" data-tx="vertebra" style="position:absolute; inset:0; opacity:0; transition:opacity .9s cubic-bezier(.45,0,.2,1); background:radial-gradient(60% 50% at 50% 0%, rgba(229,48,62,.14), transparent 70%);">
+      <div style="position:absolute; inset:0; opacity:.5; mix-blend-mode:overlay; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%222%22/></filter><rect width=%22120%22 height=%22120%22 filter=%22url(%23n)%22 opacity=%220.4%22/></svg>');"></div>
+    </div>
+    <div class="tx" data-tx="presenca" style="position:absolute; inset:0; opacity:0; transition:opacity .9s cubic-bezier(.45,0,.2,1); background-image:repeating-linear-gradient(90deg, rgba(237,241,244,.045) 0px, rgba(237,241,244,.045) 1px, transparent 1px, transparent 130px);">
+      <div style="position:absolute; inset:0; background:radial-gradient(55% 45% at 75% 0%, rgba(53,210,206,.10), transparent 70%);"></div>
+    </div>
+    <div class="tx" data-tx="atelie" style="position:absolute; inset:0; opacity:0; transition:opacity .9s cubic-bezier(.45,0,.2,1); background:radial-gradient(60% 50% at 50% 10%, rgba(255,255,255,.5), transparent 75%);"></div>
+    <div class="tx" data-tx="moldent" style="position:absolute; inset:0; opacity:0; transition:opacity .9s cubic-bezier(.45,0,.2,1); background:radial-gradient(50% 40% at 80% 8%, rgba(201,162,75,.10), transparent 70%);">
+      <div style="position:absolute; inset:0; opacity:.4; mix-blend-mode:overlay; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%222%22/></filter><rect width=%22120%22 height=%22120%22 filter=%22url(%23n)%22 opacity=%220.35%22/></svg>');"></div>
+    </div>
+    <div class="tx" data-tx="letrinha" style="position:absolute; inset:0; opacity:0; transition:opacity .9s cubic-bezier(.45,0,.2,1); background-image:repeating-linear-gradient(0deg, rgba(232,93,31,.06) 0px, rgba(232,93,31,.06) 1px, transparent 1px, transparent 42px), repeating-linear-gradient(90deg, rgba(232,93,31,.06) 0px, rgba(232,93,31,.06) 1px, transparent 1px, transparent 42px);"></div>
+  </div>
+
+  <!-- ===== preloader ===== -->
+  <div id="preloader" style="position:fixed; inset:0; z-index:100; background:#0A0A0B; display:flex; align-items:center; justify-content:center; transition:opacity .7s cubic-bezier(.45,0,.2,1), visibility .7s;">
+    <div style="display:flex; gap:.06em; overflow:hidden; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(34px,6vw,72px); letter-spacing:.04em; color:#F4F4EF;">
+      <span data-pl="0">W</span><span data-pl="1">I</span><span data-pl="2">L</span><span data-pl="3">L</span><span data-pl="4">I</span><span data-pl="5">A</span><span data-pl="6">N</span><span data-pl="7" style="color:#C6F135;">.</span>
+    </div>
+  </div>
+
+  <!-- ===== custom cursor ===== -->
+  <div id="cur-dot" aria-hidden="true" style="position:fixed; top:0; left:0; width:6px; height:6px; border-radius:50%; background:var(--accent); z-index:99; pointer-events:none; opacity:0; will-change:transform;"></div>
+  <div id="cur-ring" aria-hidden="true" style="position:fixed; top:0; left:0; width:36px; height:36px; border-radius:50%; border:1.5px solid var(--fg); z-index:99; pointer-events:none; opacity:0; will-change:transform; transition:border-color .9s;"></div>
+
+  <!-- ===== fixed skin counter ===== -->
+  <div id="skin-counter" style="position:fixed; left:clamp(16px,3vw,40px); bottom:clamp(16px,3vh,32px); z-index:40; font-family:'Space Grotesk',sans-serif; font-size:12px; letter-spacing:.2em; color:var(--muted); opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease, color .9s;">
+    <span id="skin-num" style="color:var(--fg); transition:color .9s;">01</span> / 06 — <span id="skin-name">INGARANDI</span>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section data-theme="base" data-screen-label="Hero" style="min-height:100vh; display:flex; flex-direction:column; position:relative; z-index:1; padding:clamp(20px,4vw,48px) clamp(24px,6vw,96px) 0;">
+    <header style="display:flex; align-items:center; justify-content:space-between; gap:16px; padding-bottom:24px;">
+      <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:18px; letter-spacing:.04em;">WILLIAN<span style="color:var(--accent);">®</span></span>
+      <span style="display:flex; align-items:center; gap:10px; font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-family:'Space Grotesk',sans-serif;">
+        <span style="width:8px; height:8px; border-radius:50%; background:var(--accent); animation:wl-pulse 2.2s ease-in-out infinite;"></span>
+        disponível para projetos
+      </span>
+    </header>
+
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:clamp(24px,3.5vh,40px); padding:40px 0;">
+      <h1 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(42px,8.6vw,124px); line-height:.98; letter-spacing:-0.03em; max-width:14ch;">
+        <span data-word="0" style="display:inline-block;">Sites&nbsp;</span><span data-word="1" style="display:inline-block;">que&nbsp;</span><span data-word="2" style="display:inline-block;">não&nbsp;</span><span data-word="3" style="display:inline-block;">parecem&nbsp;</span><span data-word="4" style="display:inline-block; color:var(--accent);">site&nbsp;</span><span data-word="5" style="display:inline-block; color:var(--accent);">de&nbsp;</span><span data-word="6" style="display:inline-block; color:var(--accent);">esquina.</span>
+      </h1>
+      <p data-word="7" style="margin:0; max-width:54ch; font-size:clamp(16px,1.6vw,20px); line-height:1.6; color:var(--muted);">Desenvolvimento sob medida para negócios que querem ser levados a sério. Cada projeto com identidade própria — role a página e veja este site trocar de pele.</p>
+      <div data-word="8" style="display:flex; align-items:center; gap:14px;">
+        <span style="width:1.5px; height:52px; background:var(--accent); display:block; animation:wl-scrollline 2s cubic-bezier(.45,0,.2,1) infinite;"></span>
+        <span style="font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); font-family:'Space Grotesk',sans-serif;">role para explorar</span>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid var(--line); margin:0 calc(-1 * clamp(24px,6vw,96px)); overflow:hidden; padding:18px 0; transition:border-color .9s;">
+      <div style="display:flex; width:max-content; animation:wl-marquee 26s linear infinite; font-family:'Space Grotesk',sans-serif; font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); white-space:nowrap;">
+        <span style="padding-right:2em;">Next.js · TypeScript · Tailwind · Framer Motion · Firebase · Vercel ·&nbsp;Next.js · TypeScript · Tailwind · Framer Motion · Firebase · Vercel ·&nbsp;Next.js · TypeScript · Tailwind · Framer Motion · Firebase · Vercel ·&nbsp;</span>
+        <span style="padding-right:2em;">Next.js · TypeScript · Tailwind · Framer Motion · Firebase · Vercel ·&nbsp;Next.js · TypeScript · Tailwind · Framer Motion · Firebase · Vercel ·&nbsp;Next.js · TypeScript · Tailwind · Framer Motion · Firebase · Vercel ·&nbsp;</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJETO 01 — INGARANDI BURGER ===== -->
+  <section data-theme="burger" data-screen-label="Projeto 01 Ingarandi Burger" style="min-height:100vh; position:relative; z-index:1; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr)); gap:clamp(36px,5vw,80px); align-items:center; padding:clamp(80px,12vh,140px) clamp(24px,6vw,96px);">
+    <div style="display:flex; flex-direction:column; gap:20px;">
+      <div data-reveal="0" style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <span style="font-family:'Space Grotesk',sans-serif; font-size:13px; letter-spacing:.2em; color:var(--muted);">01</span>
+        <span style="border:1px solid var(--line); border-radius:999px; padding:6px 14px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-family:'Space Grotesk',sans-serif; transition:border-color .9s;">Lanchonete · delivery</span>
+      </div>
+      <h2 data-reveal="0.08" style="margin:0; font-family:'Archivo',sans-serif; font-weight:800; font-style:italic; text-transform:uppercase; font-size:clamp(40px,5.8vw,88px); line-height:.94; letter-spacing:-0.02em;">Ingarandi<br>Burger<span style="color:var(--accent);">!</span></h2>
+      <p data-reveal="0.16" style="margin:0; max-width:46ch; font-size:clamp(15px,1.4vw,18px); line-height:1.7; color:var(--muted);">Cardápio digital com pedidos direto no site, pagamento via Mercado Pago e painel administrativo pro dono acompanhar tudo — sem pagar taxa de app de entrega.</p>
+      <a data-reveal="0.24" href="https://lancheriademonstracao.vercel.app/" target="_blank" rel="noopener" style="align-self:flex-start; display:inline-flex; align-items:center; gap:10px; font-family:'Space Grotesk',sans-serif; font-size:14px; letter-spacing:.14em; text-transform:uppercase; color:var(--fg); text-decoration:none; border-bottom:1.5px solid var(--accent); padding-bottom:6px; transition:color .9s, letter-spacing .3s;" style-hover="letter-spacing:.2em; color:var(--accent);">Ver ao vivo <span aria-hidden="true">→</span></a>
+    </div>
+    <div style="position:relative;">
+      <div data-parallax="-0.07" style="will-change:transform;">
+        <div style="position:relative; background:#1A0E04; border:1px solid rgba(255,198,26,.25); border-radius:14px; overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,.7);">
+          <div style="display:flex; align-items:center; gap:6px; padding:10px 14px; border-bottom:1px solid rgba(251,239,220,.1);">
+            <span style="width:9px; height:9px; border-radius:50%; background:rgba(251,239,220,.18);"></span><span style="width:9px; height:9px; border-radius:50%; background:rgba(251,239,220,.18);"></span><span style="width:9px; height:9px; border-radius:50%; background:rgba(251,239,220,.18);"></span>
+            <span style="margin-left:12px; flex:1; max-width:260px; background:rgba(251,239,220,.08); border-radius:6px; padding:4px 12px; font-size:10px; font-family:'Space Grotesk',sans-serif; color:#B08D5E; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">lancheriademonstracao.vercel.app</span>
+          </div>
+          <img src="uploads/ingarandi.png" alt="Site Ingarandi Burger" style="display:block; width:100%; height:clamp(300px,34vw,440px); object-fit:cover; object-position:top;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJETO 02 — VERTEBRA ===== -->
+  <section data-theme="vertebra" data-screen-label="Projeto 02 VERTEBRA" style="min-height:100vh; position:relative; z-index:1; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr)); gap:clamp(36px,5vw,80px); align-items:center; padding:clamp(80px,12vh,140px) clamp(24px,6vw,96px);">
+    <div style="position:relative; order:1;">
+      <div data-parallax="-0.06" style="will-change:transform;">
+        <div style="position:absolute; inset:-10px 10px 10px -10px; border:1px solid rgba(229,48,62,.5); border-radius:16px; transform:rotate(-1deg);"></div>
+        <div style="position:relative; background:#0E0708; border:1px solid rgba(229,48,62,.35); border-radius:14px; overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,.8);">
+          <div style="display:flex; align-items:center; gap:6px; padding:10px 14px; border-bottom:1px solid rgba(234,224,219,.1);">
+            <span style="width:9px; height:9px; border-radius:50%; background:rgba(234,224,219,.18);"></span><span style="width:9px; height:9px; border-radius:50%; background:rgba(234,224,219,.18);"></span><span style="width:9px; height:9px; border-radius:50%; background:rgba(234,224,219,.18);"></span>
+            <span style="margin-left:12px; flex:1; max-width:260px; background:rgba(234,224,219,.07); border-radius:6px; padding:4px 12px; font-size:10px; font-family:'Space Grotesk',sans-serif; color:#8E7A76;">vertebrademo.vercel.app</span>
+          </div>
+          <img src="uploads/vertebra.png" alt="Site VERTEBRA Studio" style="display:block; width:100%; height:clamp(300px,34vw,440px); object-fit:cover; object-position:top;">
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px; order:2;">
+      <div data-reveal="0" style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <span style="font-family:'Space Grotesk',sans-serif; font-size:13px; letter-spacing:.2em; color:var(--muted);">02</span>
+        <span style="border:1px solid var(--line); border-radius:999px; padding:6px 14px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-family:'Space Grotesk',sans-serif; transition:border-color .9s;">Estúdio de tatuagem</span>
+      </div>
+      <h2 data-reveal="0.08" style="margin:0; font-family:'Pirata One',serif; font-weight:400; font-size:clamp(56px,8vw,116px); line-height:.92; letter-spacing:.01em;">Vertebra<span style="color:var(--accent);">.</span></h2>
+      <p data-reveal="0.16" style="margin:0; max-width:46ch; font-size:clamp(15px,1.4vw,18px); line-height:1.7; color:var(--muted);">Um estúdio de tatuagem não pode ter cara de clínica. Identidade dark construída do zero: vídeo de abertura com máscara SVG, tipografia autoral e um preto que não é o preto de todo mundo.</p>
+      <a data-reveal="0.24" href="https://vertebrademo.vercel.app/" target="_blank" rel="noopener" style="align-self:flex-start; display:inline-flex; align-items:center; gap:10px; font-family:'Space Grotesk',sans-serif; font-size:14px; letter-spacing:.14em; text-transform:uppercase; color:var(--fg); text-decoration:none; border-bottom:1.5px solid var(--accent); padding-bottom:6px; transition:color .9s, letter-spacing .3s;" style-hover="letter-spacing:.2em; color:var(--accent);">Ver ao vivo <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <!-- ===== PROJETO 03 — PRESENÇA ===== -->
+  <section data-theme="presenca" data-screen-label="Projeto 03 Presença Lucas Bertoni" style="min-height:100vh; position:relative; z-index:1; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr)); gap:clamp(36px,5vw,80px); align-items:center; padding:clamp(80px,12vh,140px) clamp(24px,6vw,96px); overflow:hidden;">
+    <div aria-hidden="true" style="position:absolute; inset:0; overflow:hidden; pointer-events:none;">
+      <div data-parallax="0.14" style="position:absolute; top:4%; left:-2%; font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(90px,15vw,230px); color:transparent; -webkit-text-stroke:1px rgba(53,210,206,.16); white-space:nowrap; will-change:transform; line-height:1;">FORÇA</div>
+      <div data-parallax="-0.12" style="position:absolute; bottom:2%; right:-4%; font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(90px,15vw,230px); color:transparent; -webkit-text-stroke:1px rgba(237,241,244,.10); white-space:nowrap; will-change:transform; line-height:1;">MÉTODO</div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px; position:relative;">
+      <div data-reveal="0" style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <span style="font-family:'Space Grotesk',sans-serif; font-size:13px; letter-spacing:.2em; color:var(--muted);">03</span>
+        <span style="border:1px solid var(--line); border-radius:999px; padding:6px 14px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-family:'Space Grotesk',sans-serif; transition:border-color .9s;">Personal trainer</span>
+      </div>
+      <h2 data-reveal="0.08" style="margin:0; font-family:'Playfair Display',serif; font-weight:700; font-size:clamp(52px,7.4vw,108px); line-height:.95; letter-spacing:-0.01em;">Presença<span style="color:var(--accent);">.</span></h2>
+      <p data-reveal="0.16" style="margin:0; max-width:46ch; font-size:clamp(15px,1.4vw,18px); line-height:1.7; color:var(--muted);">Site do treinador Lucas Bertoni: vende método, não mensalidade. Palavras gigantes em parallax, seções de transformação e agendamento direto — performance com cara de editorial esportivo.</p>
+      <a data-reveal="0.24" href="https://presen-ademopersnonal.vercel.app/" target="_blank" rel="noopener" style="align-self:flex-start; display:inline-flex; align-items:center; gap:10px; font-family:'Space Grotesk',sans-serif; font-size:14px; letter-spacing:.14em; text-transform:uppercase; color:var(--fg); text-decoration:none; border-bottom:1.5px solid var(--accent); padding-bottom:6px; transition:color .9s, letter-spacing .3s;" style-hover="letter-spacing:.2em; color:var(--accent);">Ver ao vivo <span aria-hidden="true">→</span></a>
+    </div>
+    <div style="position:relative;">
+      <div data-parallax="-0.07" style="will-change:transform;">
+        <div style="position:relative; background:#080B10; border:1px solid rgba(53,210,206,.28); border-radius:14px; overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,.8);">
+          <div style="display:flex; align-items:center; gap:6px; padding:10px 14px; border-bottom:1px solid rgba(237,241,244,.1);">
+            <span style="width:9px; height:9px; border-radius:50%; background:rgba(237,241,244,.18);"></span><span style="width:9px; height:9px; border-radius:50%; background:rgba(237,241,244,.18);"></span><span style="width:9px; height:9px; border-radius:50%; background:rgba(237,241,244,.18);"></span>
+            <span style="margin-left:12px; flex:1; max-width:260px; background:rgba(237,241,244,.07); border-radius:6px; padding:4px 12px; font-size:10px; font-family:'Space Grotesk',sans-serif; color:#7C8894; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">presen-ademopersnonal.vercel.app</span>
+          </div>
+          <img src="uploads/presenca.png" alt="Site Presença — Lucas Bertoni" style="display:block; width:100%; height:clamp(300px,34vw,440px); object-fit:cover; object-position:top;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJETO 04 — ATELIÊ MARGEM ===== -->
+  <section data-theme="atelie" data-screen-label="Projeto 04 Ateliê Margem" style="min-height:100vh; position:relative; z-index:1; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr)); gap:clamp(36px,5vw,80px); align-items:center; padding:clamp(80px,12vh,140px) clamp(24px,6vw,96px);">
+    <div style="position:relative; order:1;">
+      <div data-parallax="-0.06" style="will-change:transform;">
+        <div style="position:relative; background:#FFFDF9; border:1px solid rgba(59,53,44,.14); border-radius:8px; overflow:hidden; box-shadow:0 30px 60px -28px rgba(59,53,44,.35);">
+          <div style="display:flex; align-items:center; gap:6px; padding:10px 14px; border-bottom:1px solid rgba(59,53,44,.1);">
+            <span style="width:9px; height:9px; border-radius:50%; background:rgba(59,53,44,.14);"></span><span style="width:9px; height:9px; border-radius:50%; background:rgba(59,53,44,.14);"></span><span style="width:9px; height:9px; border-radius:50%; background:rgba(59,53,44,.14);"></span>
+            <span style="margin-left:12px; flex:1; max-width:260px; background:rgba(59,53,44,.05); border-radius:6px; padding:4px 12px; font-size:10px; font-family:'Space Grotesk',sans-serif; color:#8C8272; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">remix-ateli-margem…run.app</span>
+          </div>
+          <img src="uploads/atelie-margem.png" alt="Site Ateliê Margem" style="display:block; width:100%; height:clamp(300px,34vw,440px); object-fit:cover; object-position:top;">
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px; order:2;">
+      <div data-reveal="0" style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <span style="font-family:'Space Grotesk',sans-serif; font-size:13px; letter-spacing:.2em; color:var(--muted);">04</span>
+        <span style="border:1px solid var(--line); border-radius:999px; padding:6px 14px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-family:'Space Grotesk',sans-serif; transition:border-color .9s;">Arquitetura residencial</span>
+      </div>
+      <h2 data-reveal="0.08" style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:500; font-size:clamp(52px,7.4vw,108px); line-height:.95; letter-spacing:-0.01em;">Ateliê <em style="font-style:italic; color:var(--accent);">Margem</em></h2>
+      <p data-reveal="0.16" style="margin:0; max-width:46ch; font-size:clamp(15px,1.4vw,18px); line-height:1.7; color:var(--muted);">Arquitetura autoral pede ritmo lento: serifada fina, muito ar e animações sem pressa. O site respira como as casas que o ateliê projeta.</p>
+      <a data-reveal="0.24" href="https://remix-ateli-margem-679712491853.us-east1.run.app/" target="_blank" rel="noopener" style="align-self:flex-start; display:inline-flex; align-items:center; gap:10px; font-family:'Space Grotesk',sans-serif; font-size:14px; letter-spacing:.14em; text-transform:uppercase; color:var(--fg); text-decoration:none; border-bottom:1.5px solid var(--accent); padding-bottom:6px; transition:color .9s, letter-spacing .3s;" style-hover="letter-spacing:.2em; color:var(--accent);">Ver ao vivo <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <!-- ===== PROJETO 05 — MOLDENT ===== -->
+  <section data-theme="moldent" data-screen-label="Projeto 05 Moldent Fotografia" style="min-height:100vh; position:relative; z-index:1; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr)); gap:clamp(36px,5vw,80px); align-items:center; padding:clamp(80px,12vh,140px) clamp(24px,6vw,96px);">
+    <div style="display:flex; flex-direction:column; gap:20px;">
+      <div data-reveal="0" style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <span style="font-family:'Space Grotesk',sans-serif; font-size:13px; letter-spacing:.2em; color:var(--muted);">05</span>
+        <span style="border:1px solid var(--line); border-radius:999px; padding:6px 14px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-family:'Space Grotesk',sans-serif; transition:border-color .9s;">Fotografia editorial</span>
+      </div>
+      <h2 data-reveal="0.08" style="margin:0; font-family:'Playfair Display',serif; font-weight:600; font-size:clamp(52px,7.4vw,108px); line-height:.95; letter-spacing:-0.01em;">Moldent<span style="font-style:italic; color:var(--accent);">.</span></h2>
+      <p data-reveal="0.16" style="margin:0; max-width:46ch; font-size:clamp(15px,1.4vw,18px); line-height:1.7; color:var(--muted);">Fotografia editorial merece palco escuro: serifada clássica, dourado sutil e um grid de fotos com hover que deixa a imagem falar mais alto que a interface.</p>
+      <a data-reveal="0.24" href="https://site-demo-fotografos-679712491853.us-east1.run.app/" target="_blank" rel="noopener" style="align-self:flex-start; display:inline-flex; align-items:center; gap:10px; font-family:'Space Grotesk',sans-serif; font-size:14px; letter-spacing:.14em; text-transform:uppercase; color:var(--fg); text-decoration:none; border-bottom:1.5px solid var(--accent); padding-bottom:6px; transition:color .9s, letter-spacing .3s;" style-hover="letter-spacing:.2em; color:var(--accent);">Ver ao vivo <span aria-hidden="true">→</span></a>
+    </div>
+    <div style="position:relative;">
+      <div data-parallax="-0.07" style="will-change:transform;">
+        <div style="position:relative; background:#0F0D0B; border:1px solid rgba(201,162,75,.3); border-radius:14px; overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,.8);">
+          <div style="display:flex; align-items:center; gap:6px; padding:10px 14px; border-bottom:1px solid rgba(239,233,225,.1);">
+            <span style="width:9px; height:9px; border-radius:50%; background:rgba(239,233,225,.18);"></span><span style="width:9px; height:9px; border-radius:50%; background:rgba(239,233,225,.18);"></span><span style="width:9px; height:9px; border-radius:50%; background:rgba(239,233,225,.18);"></span>
+            <span style="margin-left:12px; flex:1; max-width:260px; background:rgba(239,233,225,.07); border-radius:6px; padding:4px 12px; font-size:10px; font-family:'Space Grotesk',sans-serif; color:#9C9186; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">site-demo-fotografos…run.app</span>
+          </div>
+          <img src="uploads/moldent.png" alt="Site Moldent Fotografia" style="display:block; width:100%; height:clamp(300px,34vw,440px); object-fit:cover; object-position:top;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJETO 06 — LETRINHA ===== -->
+  <section data-theme="letrinha" data-screen-label="Projeto 06 Letrinha" style="min-height:100vh; position:relative; z-index:1; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr)); gap:clamp(36px,5vw,80px); align-items:center; padding:clamp(80px,12vh,140px) clamp(24px,6vw,96px);">
+    <div style="position:relative; order:1;">
+      <div data-parallax="-0.06" style="will-change:transform;">
+        <div style="position:relative; background:#FFFDF4; border:2px solid #1E1B16; border-radius:6px; overflow:hidden; box-shadow:8px 8px 0 #1E1B16;">
+          <div style="display:flex; align-items:center; gap:6px; padding:10px 14px; border-bottom:2px solid #1E1B16;">
+            <span style="width:9px; height:9px; border-radius:50%; border:1.5px solid #1E1B16;"></span><span style="width:9px; height:9px; border-radius:50%; border:1.5px solid #1E1B16;"></span><span style="width:9px; height:9px; border-radius:50%; background:#E85D1F;"></span>
+            <span style="margin-left:12px; flex:1; max-width:260px; border:1.5px solid #1E1B16; border-radius:3px; padding:3px 12px; font-size:10px; font-family:'Space Grotesk',sans-serif; color:#1E1B16;">gameletrinhas.vercel.app</span>
+          </div>
+          <img src="uploads/letrinha.png" alt="Jogo Letrinha" style="display:block; width:100%; height:clamp(300px,34vw,440px); object-fit:cover; object-position:top;">
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px; order:2;">
+      <div data-reveal="0" style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <span style="font-family:'Space Grotesk',sans-serif; font-size:13px; letter-spacing:.2em; color:var(--muted);">06</span>
+        <span style="border:1px solid var(--line); border-radius:999px; padding:6px 14px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-family:'Space Grotesk',sans-serif; transition:border-color .9s;">Jogo de palavras · projeto autoral</span>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; perspective:600px;">
+        <span data-flip="0" style="width:clamp(38px,3.6vw,52px); height:clamp(38px,3.6vw,52px); display:flex; align-items:center; justify-content:center; background:#FFFDF4; border:2px solid var(--fg); box-shadow:4px 4px 0 var(--fg); font-family:'Baloo 2',sans-serif; font-weight:800; font-size:clamp(18px,1.8vw,24px); color:var(--fg); will-change:transform; transition:border-color .9s, color .9s;">L</span>
+        <span data-flip="0.08" style="width:clamp(38px,3.6vw,52px); height:clamp(38px,3.6vw,52px); display:flex; align-items:center; justify-content:center; background:#FFFDF4; border:2px solid var(--fg); box-shadow:4px 4px 0 var(--fg); font-family:'Baloo 2',sans-serif; font-weight:800; font-size:clamp(18px,1.8vw,24px); color:var(--fg); will-change:transform; transition:border-color .9s, color .9s;">E</span>
+        <span data-flip="0.16" style="width:clamp(38px,3.6vw,52px); height:clamp(38px,3.6vw,52px); display:flex; align-items:center; justify-content:center; background:#E85D1F; border:2px solid var(--fg); box-shadow:4px 4px 0 var(--fg); font-family:'Baloo 2',sans-serif; font-weight:800; font-size:clamp(18px,1.8vw,24px); color:#FFFDF4; will-change:transform; transition:border-color .9s;">T</span>
+        <span data-flip="0.24" style="width:clamp(38px,3.6vw,52px); height:clamp(38px,3.6vw,52px); display:flex; align-items:center; justify-content:center; background:#FFFDF4; border:2px solid var(--fg); box-shadow:4px 4px 0 var(--fg); font-family:'Baloo 2',sans-serif; font-weight:800; font-size:clamp(18px,1.8vw,24px); color:var(--fg); will-change:transform; transition:border-color .9s, color .9s;">R</span>
+        <span data-flip="0.32" style="width:clamp(38px,3.6vw,52px); height:clamp(38px,3.6vw,52px); display:flex; align-items:center; justify-content:center; background:#FFFDF4; border:2px solid var(--fg); box-shadow:4px 4px 0 var(--fg); font-family:'Baloo 2',sans-serif; font-weight:800; font-size:clamp(18px,1.8vw,24px); color:var(--fg); will-change:transform; transition:border-color .9s, color .9s;">I</span>
+        <span data-flip="0.4" style="width:clamp(38px,3.6vw,52px); height:clamp(38px,3.6vw,52px); display:flex; align-items:center; justify-content:center; background:#E85D1F; border:2px solid var(--fg); box-shadow:4px 4px 0 var(--fg); font-family:'Baloo 2',sans-serif; font-weight:800; font-size:clamp(18px,1.8vw,24px); color:#FFFDF4; will-change:transform; transition:border-color .9s;">N</span>
+        <span data-flip="0.48" style="width:clamp(38px,3.6vw,52px); height:clamp(38px,3.6vw,52px); display:flex; align-items:center; justify-content:center; background:#FFFDF4; border:2px solid var(--fg); box-shadow:4px 4px 0 var(--fg); font-family:'Baloo 2',sans-serif; font-weight:800; font-size:clamp(18px,1.8vw,24px); color:var(--fg); will-change:transform; transition:border-color .9s, color .9s;">H</span>
+        <span data-flip="0.56" style="width:clamp(38px,3.6vw,52px); height:clamp(38px,3.6vw,52px); display:flex; align-items:center; justify-content:center; background:#FFFDF4; border:2px solid var(--fg); box-shadow:4px 4px 0 var(--fg); font-family:'Baloo 2',sans-serif; font-weight:800; font-size:clamp(18px,1.8vw,24px); color:var(--fg); will-change:transform; transition:border-color .9s, color .9s;">A</span>
+      </div>
+      <p data-reveal="0.16" style="margin:0; max-width:46ch; font-size:clamp(15px,1.4vw,18px); line-height:1.7; color:var(--muted);">Jogo de palavras estilo Termo: modos solo e dueto, estatísticas e tiles com flip. Projeto autoral — a prova de que dá pra ir longe tecnicamente se divertindo.</p>
+      <a data-reveal="0.24" href="https://gameletrinhas.vercel.app/" target="_blank" rel="noopener" style="align-self:flex-start; display:inline-flex; align-items:center; gap:10px; font-family:'Space Grotesk',sans-serif; font-size:14px; letter-spacing:.14em; text-transform:uppercase; color:var(--fg); text-decoration:none; border-bottom:1.5px solid var(--accent); padding-bottom:6px; transition:color .9s, letter-spacing .3s;" style-hover="letter-spacing:.2em; color:var(--accent);">Ver ao vivo <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <!-- ===== COMO EU TRABALHO ===== -->
+  <section data-theme="base" data-screen-label="Como eu trabalho" style="min-height:100vh; position:relative; z-index:1; display:flex; flex-direction:column; justify-content:center; gap:clamp(40px,6vh,64px); padding:clamp(80px,12vh,140px) clamp(24px,6vw,96px);">
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <span data-reveal="0" style="font-family:'Space Grotesk',sans-serif; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--accent);">De volta ao meu tema — esse sou eu</span>
+      <h2 data-reveal="0.08" style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(38px,5.6vw,80px); line-height:1; letter-spacing:-0.02em;">Como eu trabalho</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); gap:clamp(16px,2vw,28px);">
+      <div data-tilt="true" data-reveal="0.1" style="border:1px solid var(--line); border-radius:18px; padding:clamp(24px,2.5vw,36px); display:flex; flex-direction:column; gap:16px; background:color-mix(in oklab, var(--fg) 4%, transparent); transition:border-color .9s, background .9s; will-change:transform;">
+        <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15px; color:var(--accent); letter-spacing:.06em;">01</span>
+        <h3 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:clamp(22px,2vw,28px);">Conversa</h3>
+        <p style="margin:0; font-size:15px; line-height:1.7; color:var(--muted);">Primeiro eu entendo o negócio, não só o site. O que te traz cliente? O que te diferencia? O site nasce disso.</p>
+      </div>
+      <div data-tilt="true" data-reveal="0.2" style="border:1px solid var(--line); border-radius:18px; padding:clamp(24px,2.5vw,36px); display:flex; flex-direction:column; gap:16px; background:color-mix(in oklab, var(--fg) 4%, transparent); transition:border-color .9s, background .9s; will-change:transform;">
+        <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15px; color:var(--accent); letter-spacing:.06em;">02</span>
+        <h3 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:clamp(22px,2vw,28px);">Construção</h3>
+        <p style="margin:0; font-size:15px; line-height:1.7; color:var(--muted);">Design e código sob medida, sem template. Entrega em dias, não meses — e você acompanha tudo de perto.</p>
+      </div>
+      <div data-tilt="true" data-reveal="0.3" style="border:1px solid var(--line); border-radius:18px; padding:clamp(24px,2.5vw,36px); display:flex; flex-direction:column; gap:16px; background:color-mix(in oklab, var(--fg) 4%, transparent); transition:border-color .9s, background .9s; will-change:transform;">
+        <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15px; color:var(--accent); letter-spacing:.06em;">03</span>
+        <h3 style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:clamp(22px,2vw,28px);">Lançamento</h3>
+        <p style="margin:0; font-size:15px; line-height:1.7; color:var(--muted);">Site no ar, rápido, seguro, no seu domínio. E pronto pra crescer: SEO, métricas e suporte de quem fez o código.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOBRE ===== -->
+  <section data-theme="base" data-screen-label="Sobre" style="position:relative; z-index:1; display:flex; flex-direction:column; gap:clamp(40px,6vh,64px); padding:clamp(60px,10vh,120px) clamp(24px,6vw,96px) clamp(100px,14vh,160px);">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr)); gap:clamp(32px,4vw,64px); align-items:center;">
+      <div data-reveal="0" style="display:flex; justify-content:center;">
+        <div data-tilt="true" style="width:clamp(180px,22vw,260px); height:clamp(180px,22vw,260px); border-radius:50%; border:1.5px solid var(--line); display:flex; align-items:center; justify-content:center; position:relative; transition:border-color .9s; will-change:transform;" style-hover="border-color:var(--accent);">
+          <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(64px,8vw,100px); color:var(--accent);">W</span>
+          <span style="position:absolute; bottom:10%; right:6%; background:var(--accent); color:#0A0A0B; border-radius:999px; padding:6px 14px; font-size:11px; font-weight:600; font-family:'Space Grotesk',sans-serif; letter-spacing:.08em;">PR · BR</span>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:18px;">
+        <h2 data-reveal="0.08" style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(30px,4vw,52px); line-height:1.05; letter-spacing:-0.02em;">Código de verdade,<br>do zero.</h2>
+        <p data-reveal="0.16" style="margin:0; max-width:52ch; font-size:clamp(15px,1.5vw,19px); line-height:1.7; color:var(--muted);">Sou o Willian, desenvolvedor do Paraná. Construo cada projeto do zero — sem WordPress engessado, sem template pago. Se o seu negócio tem personalidade, o seu site também deveria ter.</p>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr)); gap:clamp(16px,2vw,28px); border-top:1px solid var(--line); padding-top:clamp(28px,4vh,44px); transition:border-color .9s;">
+      <div data-reveal="0.1" style="display:flex; flex-direction:column; gap:6px;">
+        <span data-count="24" data-suffix="+" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(40px,5vw,64px); color:var(--accent); line-height:1;">0</span>
+        <span style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-family:'Space Grotesk',sans-serif;">projetos entregues</span>
+      </div>
+      <div data-reveal="0.2" style="display:flex; flex-direction:column; gap:6px;">
+        <span data-count="9" data-suffix="" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(40px,5vw,64px); color:var(--accent); line-height:1;">0</span>
+        <span style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-family:'Space Grotesk',sans-serif;">nichos atendidos</span>
+      </div>
+      <div data-reveal="0.3" style="display:flex; flex-direction:column; gap:6px;">
+        <span data-count="12" data-suffix=" dias" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(40px,5vw,64px); color:var(--accent); line-height:1;">0</span>
+        <span style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-family:'Space Grotesk',sans-serif;">entrega média</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section data-theme="base" data-screen-label="CTA final" style="min-height:100vh; position:relative; z-index:1; background:var(--accent); color:#0A0A0B; display:flex; flex-direction:column; justify-content:center; padding:clamp(60px,10vh,120px) clamp(24px,6vw,96px) clamp(28px,4vh,48px); transition:background-color .9s;">
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:clamp(28px,5vh,48px);">
+      <h2 data-reveal="0" style="margin:0; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(44px,8.6vw,132px); line-height:.96; letter-spacing:-0.03em; max-width:12ch;">Seu negócio merece mais que um Linktree.</h2>
+      <a id="wa-btn" data-reveal="0.15" href="https://wa.me/5541999999999" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:14px; background:#0A0A0B; color:var(--accent); border-radius:999px; padding:clamp(20px,2.4vw,28px) clamp(36px,4vw,56px); font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:clamp(17px,1.8vw,22px); text-decoration:none; will-change:transform;">
+        Chamar no WhatsApp <span aria-hidden="true" style="font-size:1.2em;">↗</span>
+      </a>
+    </div>
+    <footer style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; border-top:1px solid rgba(10,10,11,.25); padding-top:22px; font-family:'Space Grotesk',sans-serif; font-size:13px; letter-spacing:.06em;">
+      <span style="font-weight:700;">WILLIAN® — © 2026</span>
+      <span style="display:flex; gap:24px;">
+        <a href="https://github.com" target="_blank" rel="noopener" style="color:#0A0A0B; text-decoration:none; border-bottom:1px solid transparent; transition:border-color .25s;" style-hover="border-bottom-color:#0A0A0B;">GitHub</a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" style="color:#0A0A0B; text-decoration:none; border-bottom:1px solid transparent; transition:border-color .25s;" style-hover="border-bottom-color:#0A0A0B;">Instagram</a>
+        <a href="mailto:oi@willian.dev" style="color:#0A0A0B; text-decoration:none; border-bottom:1px solid transparent; transition:border-color .25s;" style-hover="border-bottom-color:#0A0A0B;">e-mail</a>
+      </span>
+    </footer>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#C6F135&quot;,&quot;options&quot;:[&quot;#C6F135&quot;,&quot;#7DF9FF&quot;,&quot;#FF5C1F&quot;,&quot;#FFD400&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tema&quot;},&quot;showPreloader&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Tema&quot;},&quot;whatsapp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5541999999999&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contato&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const $ = (s, c) => (c || document).querySelector(s);
+    const $$ = (s, c) => Array.from((c || document).querySelectorAll(s));
+    const fine = window.matchMedia('(pointer:fine)').matches;
+    const ease = 'cubic-bezier(.22,1,.36,1)';
+    const root = $('#site-root');
+    if (!root) return;
+
+    // ---------- props ----------
+    const accent = this.props.accent ?? '#C6F135';
+    const wa = this.props.whatsapp ?? '5541999999999';
+    const waBtn = $('#wa-btn');
+    if (waBtn) waBtn.href = 'https://wa.me/' + wa + '?text=' + encodeURIComponent('Oi Willian! Quero um site pro meu negócio.');
+
+    // ---------- themes ----------
+    const THEMES = {
+      base:     { bg: '#0A0A0B', fg: '#F4F4EF', muted: '#9A9A93', accent: accent,    line: 'rgba(244,244,239,.14)' },
+      burger:   { bg: '#241305', fg: '#FBEFDC', muted: '#B08D5E', accent: '#FFC61A', line: 'rgba(251,239,220,.18)' },
+      vertebra: { bg: '#0B0405', fg: '#EAE0DB', muted: '#8E7A76', accent: '#E5303E', line: 'rgba(234,224,219,.16)' },
+      presenca: { bg: '#0B0E14', fg: '#EDF1F4', muted: '#7C8894', accent: '#35D2CE', line: 'rgba(237,241,244,.15)' },
+      atelie:   { bg: '#F1EAE0', fg: '#3B352C', muted: '#8C8272', accent: '#8A7A5C', line: 'rgba(59,53,44,.20)' },
+      moldent:  { bg: '#151210', fg: '#EFE9E1', muted: '#9C9186', accent: '#C9A24B', line: 'rgba(239,233,225,.15)' },
+      letrinha: { bg: '#FAF4E4', fg: '#1E1B16', muted: '#6E6552', accent: '#E85D1F', line: 'rgba(30,27,22,.24)' }
+    };
+    const PROJECTS = {
+      burger:   { num: '01', label: 'INGARANDI BURGER' },
+      vertebra: { num: '02', label: 'VERTEBRA' },
+      presenca: { num: '03', label: 'PRESENÇA' },
+      atelie:   { num: '04', label: 'ATELIÊ MARGEM' },
+      moldent:  { num: '05', label: 'MOLDENT' },
+      letrinha: { num: '06', label: 'LETRINHA' }
+    };
+    const counterEl = $('#skin-counter'), counterNum = $('#skin-num'), counterName = $('#skin-name');
+    let current = '';
+    const setTheme = (name) => {
+      if (!name || name === current) return;
+      current = name;
+      const t = THEMES[name] || THEMES.base;
+      root.style.setProperty('--bg', t.bg);
+      root.style.setProperty('--fg', t.fg);
+      root.style.setProperty('--muted', t.muted);
+      root.style.setProperty('--accent', t.accent);
+      root.style.setProperty('--line', t.line);
+      $$('.tx').forEach(el => { el.style.opacity = el.dataset.tx === name ? '1' : '0'; });
+      const meta = PROJECTS[name];
+      if (meta && counterEl) {
+        counterNum.textContent = meta.num;
+        counterName.textContent = meta.label;
+        counterEl.style.opacity = '1';
+        counterEl.style.transform = 'translateY(0)';
+      } else if (counterEl) {
+        counterEl.style.opacity = '0';
+        counterEl.style.transform = 'translateY(10px)';
+      }
+    };
+    setTheme('base');
+    const tio = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) setTheme(e.target.dataset.theme); });
+    }, { threshold: 0.42 });
+    $$('[data-theme]').forEach(s => tio.observe(s));
+
+    // ---------- reveal on scroll ----------
+    const vh = window.innerHeight;
+    const reveals = $$('[data-reveal]');
+    reveals.forEach(el => {
+      if (el.getBoundingClientRect().top < vh * 0.9) return; // already visible: leave as-is
+      el.dataset.hidden = '1';
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.filter = 'blur(10px)';
+    });
+    const rio = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        rio.unobserve(el);
+        if (!el.dataset.hidden) return;
+        const d = parseFloat(el.dataset.reveal || '0');
+        el.style.transition = 'opacity .9s ' + ease + ' ' + d + 's, transform .9s ' + ease + ' ' + d + 's, filter .9s ' + ease + ' ' + d + 's';
+        requestAnimationFrame(() => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+          el.style.filter = 'blur(0px)';
+        });
+        setTimeout(() => { el.style.transition = ''; el.style.filter = ''; }, (d + 1) * 1000 + 100);
+      });
+    }, { threshold: 0.18 });
+    reveals.forEach(el => rio.observe(el));
+
+    // ---------- letter-tile flip (Letrinha) ----------
+    const flips = $$('[data-flip]');
+    flips.forEach(el => {
+      if (el.getBoundingClientRect().top < vh * 0.9) return;
+      el.dataset.hiddenFlip = '1';
+      el.style.transform = 'rotateX(90deg)';
+      el.style.opacity = '0';
+    });
+    const fio = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        fio.unobserve(el);
+        if (!el.dataset.hiddenFlip) return;
+        const d = parseFloat(el.dataset.flip || '0');
+        el.style.transition = 'transform .7s ' + ease + ' ' + d + 's, opacity .5s ' + ease + ' ' + d + 's';
+        requestAnimationFrame(() => {
+          el.style.transform = 'rotateX(0deg)';
+          el.style.opacity = '1';
+        });
+      });
+    }, { threshold: 0.4 });
+    flips.forEach(el => fio.observe(el));
+
+    // ---------- hero word reveal ----------
+    const words = $$('[data-word]');
+    words.forEach(w => {
+      w.style.opacity = '0';
+      w.style.transform = 'translateY(34px)';
+      w.style.filter = 'blur(12px)';
+    });
+    const revealHero = () => {
+      words.forEach(w => {
+        const i = parseFloat(w.dataset.word || '0');
+        w.style.transition = 'opacity .8s ' + ease + ' ' + (i * 0.09) + 's, transform .8s ' + ease + ' ' + (i * 0.09) + 's, filter .8s ' + ease + ' ' + (i * 0.09) + 's';
+        requestAnimationFrame(() => {
+          w.style.opacity = '1';
+          w.style.transform = 'translateY(0)';
+          w.style.filter = 'blur(0px)';
+        });
+      });
+    };
+
+    // ---------- preloader ----------
+    const pl = $('#preloader');
+    const letters = $$('[data-pl]');
+    const showPl = this.props.showPreloader ?? true;
+    if (!showPl || sessionStorage.getItem('wl-preloader-seen')) {
+      if (pl) pl.style.display = 'none';
+      revealHero();
+    } else {
+      sessionStorage.setItem('wl-preloader-seen', '1');
+      letters.forEach((l, i) => {
+        l.style.display = 'inline-block';
+        l.style.transform = 'translateY(110%)';
+        l.style.transition = 'transform .6s ' + ease + ' ' + (i * 0.05) + 's';
+        requestAnimationFrame(() => { l.style.transform = 'translateY(0)'; });
+      });
+      setTimeout(() => {
+        pl.style.opacity = '0';
+        pl.style.visibility = 'hidden';
+        revealHero();
+        setTimeout(() => { pl.style.display = 'none'; }, 750);
+      }, 1300);
+    }
+
+    // ---------- custom cursor ----------
+    if (fine) {
+      const st = document.createElement('style');
+      st.textContent = '#site-root, #site-root * { cursor: none !important; }';
+      document.head.appendChild(st);
+      const dot = $('#cur-dot'), ring = $('#cur-ring');
+      dot.style.opacity = '1'; ring.style.opacity = '1';
+      let mx = innerWidth / 2, my = innerHeight / 2;
+      let dx = mx, dy = my, rx = mx, ry = my, sc = 1, cs = 1;
+      addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        const t = e.target && e.target.closest ? e.target.closest('a,button,[data-tilt]') : null;
+        sc = t ? 2.1 : 1;
+      }, { passive: true });
+      const loop = () => {
+        dx += (mx - dx) * 0.42; dy += (my - dy) * 0.42;
+        rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15;
+        cs += (sc - cs) * 0.14;
+        dot.style.transform = 'translate(' + (dx - 3) + 'px,' + (dy - 3) + 'px)';
+        ring.style.transform = 'translate(' + (rx - 18) + 'px,' + (ry - 18) + 'px) scale(' + cs.toFixed(3) + ')';
+        requestAnimationFrame(loop);
+      };
+      loop();
+    }
+
+    // ---------- parallax ----------
+    const pxEls = $$('[data-parallax]');
+    if (pxEls.length) {
+      const pp = () => {
+        const h = window.innerHeight;
+        pxEls.forEach(el => {
+          const r = el.parentElement.getBoundingClientRect();
+          if (r.bottom < -100 || r.top > h + 100) return;
+          const off = (r.top + r.height / 2 - h / 2) * parseFloat(el.dataset.parallax || '-0.07');
+          el.style.transform = 'translate3d(0,' + off.toFixed(1) + 'px,0)';
+        });
+        requestAnimationFrame(pp);
+      };
+      pp();
+    }
+
+    // ---------- 3D tilt ----------
+    if (fine) {
+      $$('[data-tilt]').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          card.style.transition = 'transform .12s ease-out';
+          card.style.transform = 'perspective(750px) rotateX(' + (-y * 6).toFixed(2) + 'deg) rotateY(' + (x * 8).toFixed(2) + 'deg) translateY(-4px)';
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transition = 'transform .7s ' + ease;
+          card.style.transform = 'none';
+        });
+      });
+    }
+
+    // ---------- count-up ----------
+    const cio = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        cio.unobserve(e.target);
+        const el = e.target;
+        const end = parseFloat(el.dataset.count);
+        const suf = el.dataset.suffix || '';
+        const t0 = performance.now();
+        const step = (t) => {
+          const p = Math.min(1, (t - t0) / 1400);
+          const k = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(end * k) + suf;
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.6 });
+    $$('[data-count]').forEach(el => cio.observe(el));
+
+    // ---------- magnetic CTA button ----------
+    if (fine && waBtn) {
+      waBtn.addEventListener('mousemove', e => {
+        const r = waBtn.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width / 2;
+        const y = e.clientY - r.top - r.height / 2;
+        waBtn.style.transition = 'transform .1s ease-out';
+        waBtn.style.transform = 'translate(' + (x * 0.3).toFixed(1) + 'px,' + (y * 0.3).toFixed(1) + 'px)';
+      });
+      waBtn.addEventListener('mouseleave', () => {
+        waBtn.style.transition = 'transform .55s cubic-bezier(.2,.9,.2,1.4)';
+        waBtn.style.transform = 'translate(0,0)';
+      });
+    }
+  }
+
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>
